@@ -14,7 +14,29 @@ namespace OnlineShop.Tests.Controllers
     public class CategoryControllerTest
     {
         private CategoryController _categoryCtrl;
-        
-        
+
+        [TestMethod]
+        public void Index()
+        {
+            var _categoryCtrl = new CategoryController();
+
+            // Act
+            ViewResult result = _categoryCtrl.Index() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CreateBook(Category category)
+        {
+            var _categoryCtrl = new CategoryController();
+
+            //var NewCate = new Category();
+            //NewCate.CategoryName = "Book";
+            //ViewResult r = _categoryCtrl.CreateCategory(NewCate) as ViewResult;
+
+            //Assert.IsNotNull(r);
+        }
     }
 }
