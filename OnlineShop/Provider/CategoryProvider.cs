@@ -23,7 +23,8 @@ namespace OnlineShop.Provider
 
         public Category GetDetails(int ID)
         {
-            return db.Categories.Find(ID);
+            var temp = db.Categories.Find(ID);
+            return temp;
         }
         public long Create(Category temp)
         {
