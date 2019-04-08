@@ -26,12 +26,14 @@ namespace OnlineShop.Provider
             var temp = db.Categories.Find(ID);
             return temp;
         }
+
         public long Create(Category temp)
         {
             db.Categories.Add(temp);
             db.SaveChanges();
             return temp.ID;
         }
+
         public bool EditCategory(Category category)
         {
             try

@@ -39,5 +39,20 @@ namespace OnlineShop.Tests.Controllers
             // Assert
             Assert.AreEqual("Wand", result.CategoryName);
         }
+
+        [TestMethod]
+        public void createCategory()
+        {
+            // Arrange
+            var _provider = new CategoryProvider();
+
+            // Act
+            var result = _provider.Create(c1);
+
+            // Assert
+            Assert.AreEqual(6, result);
+        }
+
+        
     }
 }
