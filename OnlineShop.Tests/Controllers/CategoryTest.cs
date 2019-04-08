@@ -50,9 +50,37 @@ namespace OnlineShop.Tests.Controllers
             var result = _provider.Create(c1);
 
             // Assert
-            Assert.AreEqual(6, result);
+            Assert.AreEqual(8, result);
         }
 
-        
+        [TestMethod]
+        public void editCategory()
+        {
+            // Arrange
+            var _provider = new CategoryProvider();
+            var newCg = new Category();
+            newCg.ID = 6;
+            newCg.CategoryName = "Sushi";
+
+            // Act
+            var result = _provider.EditCategory(newCg);
+
+            // Assert
+            Assert.IsTrue(result, "ID invaild.");
+        }
+
+        [TestMethod]
+        public void deleteCategory()
+        {
+            // Arrange
+            var _provider = new CategoryProvider();
+            var id = 4;
+
+            // Act
+            var result = _provider.DeleteCategory(id);
+
+            // Assert
+            Assert.IsTrue(result, "ID invaild.");
+        }
     }
 }
