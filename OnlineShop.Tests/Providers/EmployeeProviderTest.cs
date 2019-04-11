@@ -7,9 +7,6 @@ using OnlineShop.Provider;
 
 namespace OnlineShop.Tests.Provider
 {
-    /// <summary>
-    /// Summary description for EmployeeProviderTest
-    /// </summary>
     [TestClass]
     public class EmployeeProviderTest
     {
@@ -37,7 +34,7 @@ namespace OnlineShop.Tests.Provider
         }
 
         private TestContext test;
-        
+
         public TestContext TestContext
         {
             get
