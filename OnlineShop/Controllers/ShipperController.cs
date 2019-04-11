@@ -8,6 +8,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
+    [Authorize]
     public class ShipperController : Controller
     {
         ShipperProvider _provider = new ShipperProvider();
