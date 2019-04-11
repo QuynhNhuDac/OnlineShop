@@ -1,0 +1,11 @@
+companyEmail,password,expected
+admin@ts.com,admin@12345,T
+tam.levan@ts.com,tam12345,T
+an.tranthi@ts.com,antran,T
+tam.tathanh@ts.com,123,F
+son.ngothanh@ts.com,son1984,T
+thuy.lethi@ts.com,thuyle,T
+an.nguyenhuu@ts.com,annguyen,F
+duong.thaichi@ts.com,duongthai,F
+thanh.tranvan@ts.com,thanh2505,T
+nghi.nguyendung@ts.com,nghinguyen,T
