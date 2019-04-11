@@ -10,11 +10,19 @@ namespace OnlineShop.Tests.Provider
     [TestClass]
     public class EmployeeProviderTest
     {
+        private Employee testEmployee;
         public EmployeeProviderTest()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            testEmployee = new Employee();
+            testEmployee.EmployeeID = "TS0069";
+            testEmployee.FirstName = "Oanh";
+            testEmployee.LastName = "Hoang";
+            testEmployee.Password = "12345";
+            testEmployee.Address = "Tan Binh";
+            testEmployee.DOB = null;
+            testEmployee.CompanyEmail = "15569@TS.com";
+            testEmployee.PhoneNumber = null;
+            testEmployee.PersonalEmail = null;
         }
 
         [TestMethod]
@@ -81,6 +89,44 @@ namespace OnlineShop.Tests.Provider
             var result = _provider.GetEmployees().Length;
             //Assert
             Assert.AreEqual(18, result);
+        }
+
+        [TestMethod]
+        public void CreateEmployee()
+        {
+            //Arrange
+            var _provider = new EmployeeProvider();
+            var id = 19;
+            //Act
+            var result = _provider.Create(testEmployee);
+            //Assert
+            Assert.AreEqual(id, result);
+        }
+
+        [TestMethod]
+        public void EditEmployee()
+        {
+            //Arrange
+            var _provider = new EmployeeProvider();
+            testEmployee.ID = 19;
+            testEmployee.PhoneNumber = "07070707";
+            testEmployee.PersonalEmail = "oanhoanh@gmail.com";
+            //Act
+            var result = _provider.Edit(testEmployee);
+            //Assert
+            Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void DeletedEmployee()
+        {
+            //Arrange
+            var _provider = new EmployeeProvider();
+            testEmployee.ID = 19;
+            //Act
+            var result = _provider.Delete(testEmployee.ID);
+            //Assert
+            Assert.IsTrue(result);
         }
     }
 }
