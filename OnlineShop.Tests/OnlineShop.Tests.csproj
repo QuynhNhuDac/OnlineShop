@@ -87,9 +87,10 @@
     <Reference Include="System.Net.Http.WebRequest" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\CategoryTest.cs" />
+    <Compile Include="Provider\CategoryProviderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="Provider\CustomerProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

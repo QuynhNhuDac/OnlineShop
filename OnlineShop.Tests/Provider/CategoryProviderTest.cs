@@ -12,7 +12,7 @@ using OnlineShop.Provider;
 namespace OnlineShop.Tests.Controllers
 {
     [TestClass]
-    public class CategoryTest
+    public class CategoryProviderTest
     {
         private Category c1;
         private Category c2;
