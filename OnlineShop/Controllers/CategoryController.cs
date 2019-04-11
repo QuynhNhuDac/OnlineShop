@@ -8,6 +8,7 @@ using OnlineShop.Provider;
 
 namespace OnlineShop.Controllers
 {
+    [Authorize]
     public class CategoryController : Controller
     {
         CategoryProvider _provider = new CategoryProvider();

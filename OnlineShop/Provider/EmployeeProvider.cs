@@ -72,5 +72,15 @@ namespace OnlineShop.Provider
 
 
         }
+
+        public Employee Login(string email, string pass)
+        {
+            return db.Employees.Where(x => x.CompanyEmail == email && x.Password == pass).FirstOrDefault();
+        }
+
+        public Employee GetByEmail(string email)
+        {
+            return db.Employees.SingleOrDefault(x => x.CompanyEmail == email);
+        }
     }
 }
