@@ -1,0 +1,52 @@
+﻿@model OnlineShop.Models.Employee
+@{
+    ViewBag.Title = "Login";
+}
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Mvc Simple Login Application Demo</legend>
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @if (@ViewBag.Message != null)
+        {
+            <div style="border: 1px solid red">
+                @ViewBag.Message
+            </div>
+        }
+        <table>
+            <tr>
+                <td style="padding-right:10px">Company Email</td>
+                <td>@Html.TextBoxFor(a => a.CompanyEmail) </td>
+                <td>@Html.ValidationMessageFor(a => a.CompanyEmail)</td>
+            </tr>
+            
+            <tr style="padding-top: 30px">
+                <td style="padding-top: 30px">
+                    @Html.LabelFor(a => a.Password)
+                </td>
+                
+                <td style="padding-top: 30px">
+                    <div >
+                        @Html.PasswordFor(a => a.Password)
+
+                    </div>
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(a => a.Password)
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+
+                <td style="padding-top: 30px">
+                    <input type="submit" value="Login" />
+                </td>
+                <td></td>
+            </tr>
+        </table>
+    </fieldset>
+}

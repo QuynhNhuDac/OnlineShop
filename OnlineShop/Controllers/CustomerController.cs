@@ -9,68 +9,68 @@ using OnlineShop.Provider;
 namespace OnlineShop.Controllers
 {
     [Authorize]
-    public class CategoryController : Controller
+    public class CustomerController : Controller
     {
-        CategoryProvider _provider = new CategoryProvider();
-        // GET: Category
+        CustomerProvider _provider = new CustomerProvider();
+        // GET: Customer
         public ActionResult Index()
         {
-            var temp = _provider.GetAllCategories();
+            var temp = _provider.GetAllCustomers();
             return View(temp);
         }
         [HttpGet]
-        public ActionResult CreateCategory()
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Category
+        // POST: Customer
         [HttpPost]
-        public ActionResult CreateCategory( Category category)
+        public ActionResult Create(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                long id = _provider.Create(category);
+                long id = _provider.Create(customer);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Customer");
                 }
                 else
                 {
-                    ModelState.AddModelError("","New Category has been created");
+                    ModelState.AddModelError("", "New Customer has been created");
                 }
             }
             return View();
         }
 
-        public ActionResult EditCategory(int ID)
+        public ActionResult Edit(int ID)
         {
             var temp = _provider.GetDetails(ID);
             return View(temp);
         }
 
         [HttpPost]
-        public ActionResult EditCategory(Category category)
+        public ActionResult Edit(Customer customer)
         {
             if (ModelState.IsValid)
             {
-                var temp = _provider.EditCategory(category);
+                var temp = _provider.Edit(customer);
                 if (temp)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Customer");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Category has been updated");
+                    ModelState.AddModelError("", "Customer has been updated");
                 }
             }
             return View("Index");
         }
 
         [HttpDelete]
-        public ActionResult DeleteCategory(int ID)
+        public ActionResult Delete(int ID)
         {
-            _provider.DeleteCategory(ID);
+            _provider.Delete(ID);
 
             return RedirectToAction("Index");
         }

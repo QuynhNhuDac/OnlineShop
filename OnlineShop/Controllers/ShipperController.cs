@@ -3,74 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using OnlineShop.Models;
 using OnlineShop.Provider;
+using OnlineShop.Models;
 
 namespace OnlineShop.Controllers
 {
     [Authorize]
-    public class CategoryController : Controller
+    public class ShipperController : Controller
     {
-        CategoryProvider _provider = new CategoryProvider();
-        // GET: Category
+        ShipperProvider _provider = new ShipperProvider();
+        // GET: Shipper
         public ActionResult Index()
         {
-            var temp = _provider.GetAllCategories();
+            var temp = _provider.GetShippers();
             return View(temp);
         }
-        [HttpGet]
-        public ActionResult CreateCategory()
+
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Category
         [HttpPost]
-        public ActionResult CreateCategory( Category category)
+        public ActionResult Create(Shipper shipper)
         {
             if (ModelState.IsValid)
             {
-                long id = _provider.Create(category);
+                long id = _provider.Create(shipper);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Shipper");
                 }
                 else
                 {
-                    ModelState.AddModelError("","New Category has been created");
+                    ModelState.AddModelError("", "New shipper has been added");
                 }
             }
             return View();
         }
-
-        public ActionResult EditCategory(int ID)
+        public ActionResult Edit(int ID)
         {
             var temp = _provider.GetDetails(ID);
             return View(temp);
         }
-
         [HttpPost]
-        public ActionResult EditCategory(Category category)
+        public ActionResult Edit(Shipper shipper)
         {
             if (ModelState.IsValid)
             {
-                var temp = _provider.EditCategory(category);
+                var temp = _provider.Edit(shipper);
                 if (temp)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Shipper");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Category has been updated");
+                    ModelState.AddModelError("", "Shipper has been updated");
                 }
             }
             return View("Index");
         }
-
         [HttpDelete]
-        public ActionResult DeleteCategory(int ID)
+        public ActionResult Delete(int ID)
         {
-            _provider.DeleteCategory(ID);
+            _provider.Delete(ID);
 
             return RedirectToAction("Index");
         }

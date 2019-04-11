@@ -25,8 +25,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "EditCategory", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Ajax.ActionLink("Xoa", "DeleteCategory",new { @id = item.ID}, new AjaxOptions
+            @Ajax.ActionLink("Delete", "DeleteCategory",new { @id = item.ID}, new AjaxOptions
        {
            Confirm = "Are you sure you want to delete?",
            OnComplete= "$('#row_"+item.ID+"').remove()",
