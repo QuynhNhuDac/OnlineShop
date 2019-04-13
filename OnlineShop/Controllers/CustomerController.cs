@@ -8,7 +8,7 @@ using OnlineShop.Provider;
 
 namespace OnlineShop.Controllers
 {
-    [Authorize]
+
     public class CustomerController : Controller
     {
         CustomerProvider _provider = new CustomerProvider();
@@ -67,7 +67,7 @@ namespace OnlineShop.Controllers
             return View("Index");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete(int ID)
         {
             _provider.Delete(ID);

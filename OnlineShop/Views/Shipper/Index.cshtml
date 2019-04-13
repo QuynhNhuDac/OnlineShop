@@ -25,26 +25,23 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Ajax.ActionLink("Delete", "Delete", new { @id = item.ID}, new AjaxOptions
-       {
-           Confirm = "Are you sure you want to delete?",
-           OnComplete= "$('#row_"+item.ID+"').remove()",
-           HttpMethod = "Delete"
-       })
-        </td>
-    </tr>
+    using (Html.BeginForm("Delete", "Shipper", new { id = item.ID }))
+    { <tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Address)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Phone)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?" />
+    </td>
+</tr>}
+    
 }
 
 </table>
