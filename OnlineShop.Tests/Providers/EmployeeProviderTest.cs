@@ -11,6 +11,7 @@ namespace OnlineShop.Tests.Provider
     public class EmployeeProviderTest
     {
         private Employee testEmployee;
+        private int testing;
         public EmployeeProviderTest()
         {
             testEmployee = new Employee();
@@ -23,6 +24,12 @@ namespace OnlineShop.Tests.Provider
             testEmployee.CompanyEmail = "15569@TS.com";
             testEmployee.PhoneNumber = null;
             testEmployee.PersonalEmail = null;
+        }
+
+        public int getEmployee() {
+            var _provider = new EmployeeProvider();
+            testing = _provider.GetEmployees().Length;
+            return testing;
         }
 
         [TestMethod]
@@ -85,10 +92,12 @@ namespace OnlineShop.Tests.Provider
         {
             //Arrange
             var _provider = new EmployeeProvider();
+            getEmployee();
             //Act
             var result = _provider.GetEmployees().Length;
+            var expected = testing;
             //Assert
-            Assert.AreEqual(18, result);
+            Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
@@ -96,11 +105,14 @@ namespace OnlineShop.Tests.Provider
         {
             //Arrange
             var _provider = new EmployeeProvider();
-            var id = 19;
+            var name = "Oanh";
             //Act
-            var result = _provider.Create(testEmployee);
+            var result = Int32.Parse(_provider.Create(testEmployee).ToString());
+            var details = _provider.GetDetails(result);
             //Assert
-            Assert.AreEqual(id, result);
+            Assert.AreEqual(name, details.FirstName);
+
+            //getEmployee();
         }
 
         [TestMethod]
@@ -114,7 +126,7 @@ namespace OnlineShop.Tests.Provider
             //Act
             var result = _provider.Edit(testEmployee);
             //Assert
-            Assert.IsTrue(result);
+            Assert.IsTrue(result, "Can't find this employee!");
         }
 
         [TestMethod]
@@ -122,11 +134,49 @@ namespace OnlineShop.Tests.Provider
         {
             //Arrange
             var _provider = new EmployeeProvider();
-            testEmployee.ID = 19;
+            testEmployee.ID = _provider.GetByEmail(testEmployee.CompanyEmail).ID;
             //Act
             var result = _provider.Delete(testEmployee.ID);
             //Assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        [DeploymentItem("EmployeeTestData.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\EmployeeTestData.csv", "EmployeeTestData#csv", DataAccessMethod.Sequential)]
+
+        public void GetByEmailWithData()
+        {
+            //Arrange
+            var _provider = new EmployeeProvider();
+            var email = TestContext.DataRow[0].ToString();
+            var employeeId = TestContext.DataRow[4].ToString();
+
+            //Act
+            Employee ep = new Employee();
+            ep = _provider.GetByEmail(email);
+            
+            //Assert
+            Assert.AreEqual(employeeId, ep.EmployeeID);
+        }
+
+        [TestMethod]
+        [DeploymentItem("EmployeeTestData.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\EmployeeTestData.csv", "EmployeeTestData#csv", DataAccessMethod.Sequential)]
+
+        public void GetDetailsByIdData()
+        {
+            //Arrange
+            var _provider = new EmployeeProvider();
+            var id = Int32.Parse(TestContext.DataRow[3].ToString());
+            var employeeId = TestContext.DataRow[4].ToString();
+
+            //Act
+            Employee ep = new Employee();
+            ep = _provider.GetDetails(id);
+
+            //Assert
+            Assert.AreEqual(employeeId, ep.EmployeeID);
         }
     }
 }
