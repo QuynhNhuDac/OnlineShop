@@ -5,17 +5,16 @@ using System.Web;
 using System.Web.Mvc;
 using OnlineShop.Models;
 using OnlineShop.Provider;
-
 namespace OnlineShop.Controllers
 {
 
-    public class CategoryController : Controller
+    public class ProductController : Controller
     {
-        CategoryProvider _provider = new CategoryProvider();
-        // GET: Customer
+        ProductProvider _provider = new ProductProvider();
+        // GET: Product
         public ActionResult Index()
         {
-            var temp = _provider.GetAllCategories();
+            var temp = _provider.GetProducts();
             return View(temp);
         }
         [HttpGet]
@@ -24,20 +23,20 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        // POST: Customer
+        // POST: Category
         [HttpPost]
-        public ActionResult Create(Category category)
+        public ActionResult Create(Product product)
         {
             if (ModelState.IsValid)
             {
-                long id = _provider.Create(category);
+                long id = _provider.Create(product);
                 if (id > 0)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Product");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "New Category has been created");
+                    ModelState.AddModelError("", "New Product has been created");
                 }
             }
             return View();
@@ -50,27 +49,28 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Category category)
+        public ActionResult Edit(Product product)
         {
             if (ModelState.IsValid)
             {
-                var temp = _provider.EditCategory(category);
+                var temp = _provider.Edit(product);
                 if (temp)
                 {
-                    return RedirectToAction("Index", "Category");
+                    return RedirectToAction("Index", "Product");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Category has been updated");
+                    ModelState.AddModelError("", "Product has been updated");
                 }
             }
             return View("Index");
         }
 
         [HttpPost]
-        public ActionResult Delete(int ID)
+        public ActionResult DeleteCategory(int ID)
         {
-            _provider.DeleteCategory(ID);
+            _provider.Delete(ID);
+
             return RedirectToAction("Index");
         }
     }
