@@ -8,7 +8,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateCategory")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -19,20 +19,18 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr id="row_@item.ID">
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditCategory", new { id=item.ID }) |
-            @Ajax.ActionLink("Delete", "DeleteCategory",new { @id = item.ID}, new AjaxOptions
-       {
-           Confirm = "Are you sure you want to delete?",
-           OnComplete= "$('#row_"+item.ID+"').remove()",
-           HttpMethod = "Delete"
-       })
-        </td>
-    </tr>
+    using (Html.BeginForm("Delete", "Category", new { id = item.ID }))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?" />
+            </td>
+        </tr>
+    }
 }
 
 </table>

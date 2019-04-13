@@ -5,7 +5,7 @@ using System.Web;
 using OnlineShop.Models;
 namespace OnlineShop.Provider
 {
-    public class CategoryProvider:BaseProvider
+    public class CategoryProvider : BaseProvider
     {
         public Category[] GetAllCategories()
         {
@@ -23,14 +23,17 @@ namespace OnlineShop.Provider
 
         public Category GetDetails(int ID)
         {
-            return db.Categories.Find(ID);
+            var temp = db.Categories.Find(ID);
+            return temp;
         }
+
         public long Create(Category temp)
         {
             db.Categories.Add(temp);
             db.SaveChanges();
             return temp.ID;
         }
+
         public bool EditCategory(Category category)
         {
             try
@@ -51,17 +54,16 @@ namespace OnlineShop.Provider
         {
             try
             {
-                var delcategory = db.Categories.Find(ID);
-                db.Categories.Remove(delcategory);
-                db.SaveChanges();
+                Category delcategory = base.db.Categories.Where(x => x.ID == ID).FirstOrDefault();
+                base.db.Categories.Remove(delcategory);
+                base.db.SaveChanges();
                 return true;
             }
             catch (Exception ex)
             {
+
                 return false;
             }
-
-
         }
     }
 }

@@ -9,7 +9,7 @@ using OnlineShop.Provider;
 
 namespace OnlineShop.Controllers
 {
-    [Authorize]
+
     public class EmployeeController : Controller
     {
         // GET: Employee
@@ -69,7 +69,7 @@ namespace OnlineShop.Controllers
             return View("Index");
         }
 
-        [HttpDelete]
+        [HttpPost]
         public ActionResult Delete(int ID)
         {
             _provider.Delete(ID);

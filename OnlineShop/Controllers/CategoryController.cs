@@ -8,25 +8,25 @@ using OnlineShop.Provider;
 
 namespace OnlineShop.Controllers
 {
-    [Authorize]
+
     public class CategoryController : Controller
     {
         CategoryProvider _provider = new CategoryProvider();
-        // GET: Category
+        // GET: Customer
         public ActionResult Index()
         {
             var temp = _provider.GetAllCategories();
             return View(temp);
         }
         [HttpGet]
-        public ActionResult CreateCategory()
+        public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Category
+        // POST: Customer
         [HttpPost]
-        public ActionResult CreateCategory( Category category)
+        public ActionResult Create(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -37,20 +37,20 @@ namespace OnlineShop.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("","New Category has been created");
+                    ModelState.AddModelError("", "New Category has been created");
                 }
             }
             return View();
         }
 
-        public ActionResult EditCategory(int ID)
+        public ActionResult Edit(int ID)
         {
             var temp = _provider.GetDetails(ID);
             return View(temp);
         }
 
         [HttpPost]
-        public ActionResult EditCategory(Category category)
+        public ActionResult Edit(Category category)
         {
             if (ModelState.IsValid)
             {
@@ -67,11 +67,10 @@ namespace OnlineShop.Controllers
             return View("Index");
         }
 
-        [HttpDelete]
-        public ActionResult DeleteCategory(int ID)
+        [HttpPost]
+        public ActionResult Delete(int ID)
         {
             _provider.DeleteCategory(ID);
-
             return RedirectToAction("Index");
         }
     }
