@@ -59,7 +59,7 @@ namespace OnlineShop.Tests.Provider
         [DeploymentItem("EmployeeTestData.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\EmployeeTestData.csv", "EmployeeTestData#csv", DataAccessMethod.Sequential)]
 
-        public void TestAccData()
+        public void TestLoginWithData()
         {
             //Arrange
             var _provider = new EmployeeProvider();
