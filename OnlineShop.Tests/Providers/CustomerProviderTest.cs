@@ -45,7 +45,7 @@ namespace OnlineShop.Tests.Providers
                 test = value;
             }
         }
-        
+
         [TestMethod]
         public void getAllCustomers()
         {
@@ -91,6 +91,30 @@ namespace OnlineShop.Tests.Providers
             Assert.AreEqual(name, actual.FirstName);
         }
 
-        
+        [TestMethod]
+        public void EditTestCustomer()
+        {
+            //Arrange
+            var _provider = new CustomerProvider();
+            testCustomer.ID = 10;
+            testCustomer.PhoneNumber = "07070707";
+            testCustomer.Address = "Tan Binh";
+            //Act
+            var result = _provider.Edit(testCustomer);
+            //Assert
+            Assert.IsTrue(result, "Can't find this customer!");
+        }
+
+        [TestMethod]
+        public void DeletedTestCustomer()
+        {
+            //Arrange
+            var _provider = new CustomerProvider();
+            testCustomer.ID = 10;
+            //Act
+            var result = _provider.Delete(testCustomer.ID);
+            //Assert
+            Assert.IsTrue(result, "Can't find this customer!");
+        }
     }
 }
