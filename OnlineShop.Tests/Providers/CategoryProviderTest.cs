@@ -104,7 +104,7 @@ namespace OnlineShop.Tests.Providers
             //Act
             var result = _provider.DeleteCategory(testCategory.ID);
             //Assert
-            Assert.IsTrue(result);
+            Assert.IsTrue(result, "Can't find this category!");
         }
     }
 }

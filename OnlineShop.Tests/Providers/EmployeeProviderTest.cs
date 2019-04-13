@@ -111,8 +111,6 @@ namespace OnlineShop.Tests.Provider
             var details = _provider.GetDetails(result);
             //Assert
             Assert.AreEqual(name, details.FirstName);
-
-            //getEmployee();
         }
 
         [TestMethod]
@@ -138,7 +136,7 @@ namespace OnlineShop.Tests.Provider
             //Act
             var result = _provider.Delete(testEmployee.ID);
             //Assert
-            Assert.IsTrue(result);
+            Assert.IsTrue(result, "Can't find this employee!");
         }
 
         [TestMethod]
