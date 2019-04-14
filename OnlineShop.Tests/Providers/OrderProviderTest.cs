@@ -75,43 +75,43 @@ namespace OnlineShop.Tests.Providers
         //
         #endregion
 
-        [TestMethod]
-        public void CreateOrder()
-        {
-            //Arrange
-            var _provider = new OrderProvider();
-            var OrderID = "HD005";
-            //Act
-            var result = Int32.Parse(_provider.Create(testOrder).ToString());
-            var actual = _provider.GetDetails(result);
-            //Assert
-            Assert.AreEqual(OrderID, actual.OrderID);
-        }
+        //[TestMethod]
+        //public void CreateOrder()
+        //{
+        //    //Arrange
+        //    var _provider = new OrderProvider();
+        //    var OrderID = "HD005";
+        //    //Act
+        //    var result = Int32.Parse(_provider.Create(testOrder).ToString());
+        //    var actual = _provider.GetDetails(result);
+        //    //Assert
+        //    Assert.AreEqual(OrderID, actual.OrderID);
+        //}
 
-        [TestMethod]
-        public void EditOrder()
-        {
-            //Arrange
-            var _provider = new OrderProvider();
-            //testOrder.ID = 1;
+        //[TestMethod]
+        //public void EditOrder()
+        //{
+        //    //Arrange
+        //    var _provider = new OrderProvider();
+        //    //testOrder.ID = 1;
            
-            //Act
-            var result = _provider.Edit(testOrder);
-            //Assert
-            Assert.IsTrue(result, "Can't find this Order!");
-        }
+        //    //Act
+        //    var result = _provider.Edit(testOrder);
+        //    //Assert
+        //    Assert.IsTrue(result, "Can't find this Order!");
+        //}
 
-        [TestMethod]
-        public void DeletedOrder()
-        {
-            //Arrange
-            var _provider = new OrderProvider();
-            testOrder.ID = 1;
-            //Act
-            var result = _provider.Delete(testOrder.ID);
-            //Assert
-            Assert.IsTrue(result, "Can't find this Order!");
-        }
+        //[TestMethod]
+        //public void DeletedOrder()
+        //{
+        //    //Arrange
+        //    var _provider = new OrderProvider();
+        //    testOrder.ID = 1;
+        //    //Act
+        //    var result = _provider.Delete(testOrder.ID);
+        //    //Assert
+        //    Assert.IsTrue(result, "Can't find this Order!");
+        //}
 
     }
 }
