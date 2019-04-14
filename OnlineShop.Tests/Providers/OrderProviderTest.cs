@@ -8,20 +8,31 @@ using OnlineShop.Provider;
 namespace OnlineShop.Tests.Providers
 {
     /// <summary>
-    /// Summary description for ShipperProvider
+    /// Summary description for OrderProviderTest
     /// </summary>
     [TestClass]
-    public class ShipperProviderTest
+    public class OrderProviderTest
     {
-        private Shipper testShipper;
-        private int testing;
+        private Order testOrder;
 
-        public ShipperProviderTest()
+        public OrderProviderTest()
         {
-            testShipper = new Shipper();
-            testShipper.Name = "BiuGates";
-            testShipper.Address = "Ha Tinh - SanHok";
-            testShipper.Phone = 09090909;
+            testOrder = new Order();
+            testOrder.OrderID = "HD005";
+            testOrder.CustomerID = 1;
+            testOrder.EmployeeID = 1;
+            testOrder.OrderDate = new DateTime();
+            testOrder.RequiredDate = new DateTime();
+            testOrder.ShippedDate = new DateTime();
+            testOrder.ShipVia = 1;
+            testOrder.Freight = 1;
+            testOrder.ShipAddress = "Ha tinh";
+            testOrder.DeliveryCost = 19999999;
+            testOrder.ShipCity = null;
+            testOrder.ShipCountry = null;
+            testOrder.ShipRegion = null;
+            testOrder.ShipPostalCode = null;
+
         }
 
         private TestContext testContextInstance;
@@ -65,43 +76,42 @@ namespace OnlineShop.Tests.Providers
         #endregion
 
         [TestMethod]
-        public void CreateShipper()
+        public void CreateOrder()
         {
             //Arrange
-            var _provider = new ShipperProvider();
-            var name = "BiuGates";
+            var _provider = new OrderProvider();
+            var OrderID = "HD005";
             //Act
-            var result = Int32.Parse(_provider.Create(testShipper).ToString());
-            var details = _provider.GetDetails(result);
+            var result = Int32.Parse(_provider.Create(testOrder).ToString());
+            var actual = _provider.GetDetails(result);
             //Assert
-            Assert.AreEqual(name, details.Name);
+            Assert.AreEqual(OrderID, actual.OrderID);
         }
 
         [TestMethod]
-        public void EditShipper()
+        public void EditOrder()
         {
             //Arrange
-            var _provider = new ShipperProvider();
-            //testShipper.ID = 1;
-            testShipper.Name = "Ninja Van";
-            testShipper.Address = "25B Phan Dang Luu St, Ward 3, Binh Thanh Dist";
-            testShipper.Phone = 88363056;
+            var _provider = new OrderProvider();
+            //testOrder.ID = 1;
+           
             //Act
-            var result = _provider.Edit(testShipper);
+            var result = _provider.Edit(testOrder);
             //Assert
-            Assert.IsTrue(result, "Can't find this Shipper!");
+            Assert.IsTrue(result, "Can't find this Order!");
         }
 
         [TestMethod]
-        public void DeletedShipper()
+        public void DeletedOrder()
         {
             //Arrange
-            var _provider = new ShipperProvider();
-            testShipper.ID = 1;
+            var _provider = new OrderProvider();
+            testOrder.ID = 1;
             //Act
-            var result = _provider.Delete(testShipper.ID);
+            var result = _provider.Delete(testOrder.ID);
             //Assert
-            Assert.IsTrue(result, "Can't find this Shipper!");
+            Assert.IsTrue(result, "Can't find this Order!");
         }
+
     }
 }

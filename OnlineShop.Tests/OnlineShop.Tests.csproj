@@ -89,8 +89,9 @@
     <Compile Include="Providers\CategoryProviderTest.cs" />
     <Compile Include="Providers\CustomerProviderTest.cs" />
     <Compile Include="Providers\EmployeeProviderTest.cs" />
+    <Compile Include="Providers\OrderProviderTest.cs" />
     <Compile Include="Providers\ProductProviderTest.cs" />
-    <Compile Include="Providers\ShipperProvider.cs" />
+    <Compile Include="Providers\ShipperProviderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
