@@ -42,16 +42,32 @@ namespace OnlineShop.Tests.Providers
             }
         }
 
-        //[TestMethod]
-        //public void getAllProduct()
-        //{
-        //    //Arrange
-        //    var _provider = new ProductProvider();
-        //    //Act
-        //    var result = _provider.GetProducts().Length;
-        //    //Assert
-        //    Assert.AreEqual(14, result);
-        //}
+        [TestMethod]
+        [DeploymentItem("ProductTestData.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\ProductTestData.csv", "ProductTestData#csv", DataAccessMethod.Sequential)]
+
+        public void GetDetailsByIdData()
+        {
+            //Arrange
+            var _provider = new ProductProvider();
+            var id = Int32.Parse(TestContext.DataRow[0].ToString());
+            var name = TestContext.DataRow[1].ToString();
+            //Act
+            var result = _provider.GetDetails(id);
+            //Assert
+            Assert.AreEqual(name, result.ProductName);
+        }
+
+        [TestMethod]
+        public void getAllProduct()
+        {
+            //Arrange
+            var _provider = new ProductProvider();
+            //Act
+            var result = _provider.GetProducts().Length;
+            //Assert
+            Assert.AreEqual(13, result);
+        }
 
         [TestMethod]
         public void CreateProduct()
@@ -71,13 +87,13 @@ namespace OnlineShop.Tests.Providers
         {
             //Arrange
             var _provider = new ProductProvider();
-            //testProduct.ID = 1;
-            //testProduct.ProductName = "Fantasic Beast And Where To Find Them";
-            //testProduct.CategoryID = 1;
-            //testProduct.UnitPrice = 97980;
-            //testProduct.UnitsInStock = 100;
-            //testProduct.Discontinued = false;
-            //testProduct.Image = "~/images/biabenthanhchai.jpg";
+            testProduct.ID = 14;
+            testProduct.ProductName = "";
+            testProduct.CategoryID = 1;
+            testProduct.UnitPrice = 100;
+            testProduct.UnitsInStock = 100;
+            testProduct.Discontinued = false;
+            testProduct.Image = "~/images/biabenthanhchai.jpg";
             //Act
             var result = _provider.Edit(testProduct);
             //Assert
@@ -85,17 +101,16 @@ namespace OnlineShop.Tests.Providers
         }
 
         [TestMethod]
-        public void DeletedProduct()
+        public void DeleteProduct()
         {
             //Arrange
             var _provider = new ProductProvider();
-            testProduct.ID = 1;
+            testProduct.ID = 14;
             //Act
             var result = _provider.Delete(testProduct.ID);
             //Assert
-            Assert.IsTrue(result, "Can't find this Product!");
+            Assert.IsTrue(result, "Can't find this category!");
         }
-
 
     }
 }

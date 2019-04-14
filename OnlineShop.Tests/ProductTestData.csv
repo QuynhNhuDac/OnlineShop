@@ -1,0 +1,14 @@
+ID,ProductName,CategoryID,UnitPrice,UnitsInStock,Discontinued,Image
+1,Fantasic Beast And Where To Find Them,1,97980,100,0,~/images/biabenthanhchai.jpg
+2,A History Of Magic,1,107000,100,0,~/images/biaheinekenchai.jpg
+3,Quidditch Through The Ages,1,110000,100,0,~/images/biasapporochai.jpg
+4,The Tale Of Beedle The Bard,1,98000,100,0,~/images/biasaigonchai.jpg
+5,Spell Book For Beginner,1,100000,100,0,~/Images/bia33thung.jpg
+6,Draught of Living Death,3,150000,100,0,~/images/biatigerthung.jpg
+7,Felix Felicis,3,115000,100,0,~/images/cocacolathung.jpg
+8,Pepperup Potion,3,5490000,100,0,~/images/cassetsharp.jpg
+9,Sleekeazy's Hair Potion,3,6090000,100,0,~/images/cassetsharp500w.jpg
+10,Wand #1,2,3640000,1,0,~/images/butchiden.jpg
+11,Wand #2,2,71000,1,0,~/images/butlongkim.jpg
+12,Wand #3,2,78840,1,0,~/Images/butsap.jpg
+13,Wand #4,2,162000,1,0,~/images/pepsithung.jpg
