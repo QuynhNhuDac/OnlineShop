@@ -11,7 +11,7 @@ namespace OnlineShop.Tests.Providers
     public class ProductProviderTest
     {
         private Product testProduct;
-        private int testing;
+        //private int testing;
 
         public ProductProviderTest()
         {

@@ -2,6 +2,8 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OnlineShop.Models;
+using OnlineShop.Provider;
 
 namespace OnlineShop.Tests.Providers
 {
@@ -9,13 +11,17 @@ namespace OnlineShop.Tests.Providers
     /// Summary description for ShipperProvider
     /// </summary>
     [TestClass]
-    public class ShipperProvider
+    public class ShipperProviderTest
     {
-        public ShipperProvider()
+        private Shipper testShipper;
+        private int testing;
+
+        public ShipperProviderTest()
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            testShipper = new Shipper();
+            testShipper.Name = "BiuGates";
+            testShipper.Address = "Ha Tinh - SanHok";
+            testShipper.Phone = 09090909;
         }
 
         private TestContext testContextInstance;
@@ -59,11 +65,43 @@ namespace OnlineShop.Tests.Providers
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void CreateShipper()
         {
-            //
-            // TODO: Add test logic here
-            //
+            //Arrange
+            var _provider = new ShipperProvider();
+            var name = "BiuGates";
+            //Act
+            var result = Int32.Parse(_provider.Create(testShipper).ToString());
+            var details = _provider.GetDetails(result);
+            //Assert
+            Assert.AreEqual(name, details.Name);
+        }
+
+        [TestMethod]
+        public void EditShipper()
+        {
+            //Arrange
+            var _provider = new ShipperProvider();
+            //testShipper.ID = 1;
+            testShipper.Name = "Ninja Van";
+            testShipper.Address = "25B Phan Dang Luu St, Ward 3, Binh Thanh Dist";
+            testShipper.Phone = 88363056;
+            //Act
+            var result = _provider.Edit(testShipper);
+            //Assert
+            Assert.IsTrue(result, "Can't find this Shipper!");
+        }
+
+        [TestMethod]
+        public void DeletedShipper()
+        {
+            //Arrange
+            var _provider = new ShipperProvider();
+            testShipper.ID = 1;
+            //Act
+            var result = _provider.Delete(testShipper.ID);
+            //Assert
+            Assert.IsTrue(result, "Can't find this Shipper!");
         }
     }
 }
