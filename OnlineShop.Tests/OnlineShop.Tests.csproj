@@ -90,7 +90,7 @@
     <Compile Include="Providers\CustomerProviderTest.cs" />
     <Compile Include="Providers\EmployeeProviderTest.cs" />
     <Compile Include="Providers\ProductProviderTest.cs" />
-    <Compile Include="Providers\ShipperTest.cs" />
+    <Compile Include="Providers\ShipperProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
