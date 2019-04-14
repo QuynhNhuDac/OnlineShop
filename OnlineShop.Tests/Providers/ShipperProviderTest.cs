@@ -19,9 +19,9 @@ namespace OnlineShop.Tests.Providers
         public ShipperProviderTest()
         {
             testShipper = new Shipper();
-            testShipper.Name = "BiuGates";
-            testShipper.Address = "Ha Tinh - SanHok";
-            testShipper.Phone = 09090909;
+            testShipper.Name = "Oanh";
+            testShipper.Address = "HaTinh";
+            testShipper.Phone = 090909090;
         }
 
         private TestContext testContextInstance;
@@ -42,34 +42,39 @@ namespace OnlineShop.Tests.Providers
             }
         }
 
-        #region Additional test attributes
-        //
-        // You can use the following additional attributes as you write your tests:
-        //
-        // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup to run code after all tests in a class have run
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize to run code before running each test 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup to run code after each test has run
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
+        [TestMethod]
+        [DeploymentItem("ShipperTestData.csv")]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\ShipperTestData.csv", "ShipperTestData#csv", DataAccessMethod.Sequential)]
+
+        public void GetDetailsByIdData()
+        {
+            //Arrange
+            var _provider = new ShipperProvider();
+            var id = Int32.Parse(TestContext.DataRow[0].ToString());
+            var name = TestContext.DataRow[1].ToString();
+            //Act
+            var result = _provider.GetDetails(id);
+            //Assert
+            Assert.AreEqual(name, result.Name);
+        }
+
+        [TestMethod]
+        public void getAllShipper()
+        {
+            //Arrange
+            var _provider = new ShipperProvider();
+            //Act
+            var result = _provider.GetShippers().Length;
+            //Assert
+            Assert.AreEqual(3, result);
+        }
 
         [TestMethod]
         public void CreateShipper()
         {
             //Arrange
             var _provider = new ShipperProvider();
-            var name = "BiuGates";
+            var name = "Oanh";
             //Act
             var result = Int32.Parse(_provider.Create(testShipper).ToString());
             var details = _provider.GetDetails(result);
@@ -82,10 +87,10 @@ namespace OnlineShop.Tests.Providers
         {
             //Arrange
             var _provider = new ShipperProvider();
-            //testShipper.ID = 1;
-            testShipper.Name = "Ninja Van";
-            testShipper.Address = "25B Phan Dang Luu St, Ward 3, Binh Thanh Dist";
-            testShipper.Phone = 88363056;
+            testShipper.ID = 4;
+            testShipper.Name = "BiuGates";
+            testShipper.Address = "SanHok";
+            testShipper.Phone = 111111111;
             //Act
             var result = _provider.Edit(testShipper);
             //Assert
@@ -93,15 +98,15 @@ namespace OnlineShop.Tests.Providers
         }
 
         [TestMethod]
-        public void DeletedShipper()
+        public void DeleteShipper()
         {
             //Arrange
             var _provider = new ShipperProvider();
-            testShipper.ID = 2;
+            testShipper.ID = 4;
             //Act
             var result = _provider.Delete(testShipper.ID);
             //Assert
-            Assert.IsTrue(result, "Can't find this Shipper!");
+            Assert.IsTrue(result, "Can't find this category!");
         }
     }
 }
