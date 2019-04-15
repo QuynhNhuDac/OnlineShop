@@ -17,11 +17,14 @@ namespace OnlineShop.Models
 
         public int ID { get; set; }
 
+        [Required(ErrorMessage = "Product Name cannot be blank")]
         [StringLength(500)]
         public string ProductName { get; set; }
 
+        [Required(ErrorMessage = "CategoryID cannot be blank")]
         public int CategoryID { get; set; }
 
+        [Required(ErrorMessage = "Unit Price cannot be blank")]
         public double UnitPrice { get; set; }
 
         public int? UnitsInStock { get; set; }

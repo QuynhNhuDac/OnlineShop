@@ -1,12 +1,11 @@
 ﻿@model OnlineShop.Models.Category
 
 @{
-    ViewBag.Title = "EditCategory";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>EditCategory</h2>
-
+<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
@@ -19,10 +18,9 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <p class="control-label col-md-2">*Category Name</p>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -37,7 +35,3 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

@@ -20,11 +20,11 @@ namespace OnlineShop.Models
         [StringLength(5)]
         public string CustomerID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Last Name cannot be blank")]
         [StringLength(30)]
         public string LastName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "First Name cannot be blank")]
         [StringLength(50)]
         public string FirstName { get; set; }
 
@@ -36,15 +36,15 @@ namespace OnlineShop.Models
 
         public DateTime? DOB { get; set; }
 
-        [Required]
+        
         [StringLength(50)]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = " Username cannot be blank")]
         [StringLength(500)]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password cannot be blank")]
         [StringLength(20)]
         public string Password { get; set; }
 

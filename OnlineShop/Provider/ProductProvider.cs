@@ -6,7 +6,7 @@ using OnlineShop.Models;
 
 namespace OnlineShop.Provider
 {
-    public class ProductProvider: BaseProvider
+    public class ProductProvider : BaseProvider
     {
         public Product[] GetProducts()
         {
@@ -58,9 +58,9 @@ namespace OnlineShop.Provider
         {
             try
             {
-                var delproduct = db.Products.Find(ID);
-                db.Products.Remove(delproduct);
-                db.SaveChanges();
+                Product deleteProduct = base.db.Products.Where(c => c.ID == ID).FirstOrDefault();
+                base.db.Products.Remove(deleteProduct);
+                base.db.SaveChanges();
                 return true;
             }
             catch (Exception ex)

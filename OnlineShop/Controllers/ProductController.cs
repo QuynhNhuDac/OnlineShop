@@ -67,7 +67,7 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCategory(int ID)
+        public ActionResult Delete(int ID)
         {
             _provider.Delete(ID);
 

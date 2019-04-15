@@ -16,11 +16,11 @@ namespace OnlineShop.Models
 
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage =  "Name cannot be blank")]
         [StringLength(500)]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Address cannot be blank")]
         [StringLength(500)]
         public string Address { get; set; }
 

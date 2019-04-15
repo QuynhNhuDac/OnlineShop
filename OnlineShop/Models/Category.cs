@@ -15,7 +15,7 @@ namespace OnlineShop.Models
         }
 
         public int ID { get; set; }
-
+        [Required(ErrorMessage ="Category Name cannot be blank")]
         [StringLength(500)]
         public string CategoryName { get; set; }
 

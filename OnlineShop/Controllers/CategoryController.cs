@@ -18,7 +18,7 @@ namespace OnlineShop.Controllers
             var temp = _provider.GetAllCategories();
             return View(temp);
         }
-        [HttpGet]
+        
         public ActionResult Create()
         {
             return View();
