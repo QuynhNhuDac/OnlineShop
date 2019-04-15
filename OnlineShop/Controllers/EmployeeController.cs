@@ -77,32 +77,28 @@ namespace OnlineShop.Controllers
             return RedirectToAction("Index");
         }
 
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Login(Employee employee)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var result = _provider.Login(employee.CompanyEmail, employee.Password);
-        //        if (result != null)
-        //        {
-        //            var user = _provider.GetByEmail(employee.CompanyEmail);
-        //            var userSession = new UserLogin();
-        //            userSession.CompanyEmail = user.CompanyEmail;
-        //            Session.Add(Common.CommonConstants.USER_SESSION, userSession);
-        //            return RedirectToAction("Index", "Home");
-        //        }
-        //        else
-        //        {
-        //            ModelState.AddModelError("", "Login failed");
-        //        }
-        //    }
-        //    return View("Index");
+        public ActionResult Login(Employee emp)
+        {
+            if (ModelState.IsValid)
+            {
+                var _provider = new EmployeeProvider();
+                var result = _provider.Login(emp.CompanyEmail, emp.Password);
+                if (result)
+                {
+                    var user = _provider.GetByEmail(emp.CompanyEmail);
+                    var userSession = new UserLogin();
+                    userSession.CompanyEmail = user.CompanyEmail;
+                    Session.Add(Common.CommonConstants.USER_SESSION, userSession);
+                    return RedirectToAction("Login", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cannot logged in");
+                }
+            }
+            return View("Index");
 
-        //}
+
+        }
     }
 }
