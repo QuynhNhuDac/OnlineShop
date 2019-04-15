@@ -20,11 +20,10 @@ namespace OnlineShop.Models
         [StringLength(10)]
         public string EmployeeID { get; set; }
 
-        [Required(ErrorMessage = "Last Name cannot be blank")]
+   
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "First Name cannot be blank")]
         [StringLength(50)]
         public string FirstName { get; set; }
 
