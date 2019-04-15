@@ -60,8 +60,8 @@ namespace OnlineShop.Provider
         {
             try
             {
-                var delemployee = db.Customers.Find(ID);
-                db.Customers.Remove(delemployee);
+                var delemployee = db.Employees.Find(ID);
+                db.Employees.Remove(delemployee);
                 db.SaveChanges();
                 return true;
             }
