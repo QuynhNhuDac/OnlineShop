@@ -7,9 +7,14 @@
 
 <h2>Index</h2>
 
-<p>
+<div>
+    <div class="search-box">
+        <form action="Product/Search">
+            <input type="search" id=“txtKeyword” name=“keyword” placeholder="Search"> <input type="submit" value="">
+        </form>
+    </div>
     @Html.ActionLink("Create New", "Create")
-</p>
+</div>
 <table class="table">
     <tr>
         <th>

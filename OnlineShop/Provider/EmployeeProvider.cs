@@ -60,8 +60,8 @@ namespace OnlineShop.Provider
         {
             try
             {
-                var delemployee = db.Customers.Find(ID);
-                db.Customers.Remove(delemployee);
+                var delemployee = db.Employees.Find(ID);
+                db.Employees.Remove(delemployee);
                 db.SaveChanges();
                 return true;
             }
@@ -73,14 +73,23 @@ namespace OnlineShop.Provider
 
         }
 
-        public Employee Login(string email, string pass)
+        public bool Login(string email, string pass)
         {
-            return db.Employees.Where(x => x.CompanyEmail == email && x.Password == pass).FirstOrDefault();
-        }
+            var result = db.Employees.Count(x => x.CompanyEmail == email && x.Password == pass);
+            if (result > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
 
+        }
         public Employee GetByEmail(string email)
         {
             return db.Employees.SingleOrDefault(x => x.CompanyEmail == email);
+
         }
     }
 }

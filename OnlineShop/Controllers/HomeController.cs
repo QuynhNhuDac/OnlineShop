@@ -11,7 +11,7 @@ namespace OnlineShop.Controllers
 {
     public class HomeController : Controller
     {
-        EmployeeProvider _provider = new EmployeeProvider();
+
         public ActionResult Index()
         {
             return View();
@@ -31,31 +31,27 @@ namespace OnlineShop.Controllers
             return View();
         }
 
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(Employee employee)
+        public ActionResult Login(Employee emp)
         {
             if (ModelState.IsValid)
             {
-                var result = _provider.Login(employee.CompanyEmail, employee.Password);
-                if (result != null)
+                var _provider = new EmployeeProvider();
+                var result = _provider.Login(emp.CompanyEmail, emp.Password);
+                if (result)
                 {
-                    var user = _provider.GetByEmail(employee.CompanyEmail);
+                    var user = _provider.GetByEmail(emp.CompanyEmail);
                     var userSession = new UserLogin();
                     userSession.CompanyEmail = user.CompanyEmail;
                     Session.Add(Common.CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Login failed");
+                    ModelState.AddModelError("", "Cannot logged in");
                 }
             }
             return View("Index");
+
 
         }
     }
