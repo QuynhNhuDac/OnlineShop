@@ -1,0 +1,41 @@
+﻿@model IEnumerable<OnlineShop.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div>
+    @*<div class="search-box">
+        <form action="Product/Search">
+            <input type="search" id=“txtKeyword” name=“keyword” placeholder="Search"> <input type="submit" value="">
+        </form>
+    </div>*@
+    @Html.ActionLink("Create New", "Create")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    using (Html.BeginForm("Delete", "Category", new { id = item.ID }))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete?')" />
+            </td>
+        </tr>
+    }
+}
+
+</table>
