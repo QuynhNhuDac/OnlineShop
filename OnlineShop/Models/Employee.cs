@@ -20,6 +20,7 @@ namespace OnlineShop.Models
         [StringLength(10)]
         public string EmployeeID { get; set; }
 
+   
         [StringLength(50)]
         public string LastName { get; set; }
 
@@ -34,14 +35,14 @@ namespace OnlineShop.Models
         [StringLength(50)]
         public string PhoneNumber { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Company Email cannot be blank")]
         [StringLength(50)]
         public string CompanyEmail { get; set; }
 
         [StringLength(50)]
         public string PersonalEmail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Password cannot be blank")]
         [StringLength(20)]
         public string Password { get; set; }
 

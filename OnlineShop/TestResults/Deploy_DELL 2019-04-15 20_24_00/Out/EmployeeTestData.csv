@@ -1,0 +1,11 @@
+companyEmail,password,expected,ID,employeeID,lastName,firstName,address,DOB,phoneNumber,personalEmail
+admin@ts.com,admin@12345,T,1,TS0001,System,Admin,,00:00.0,,
+tam.levan@ts.com,tam12345,T,2,TS0002,Lê v?n,Tâm,45 Tr?n Phú,00:00.0,8663447,tam2205@gmail.com
+an.tranthi@ts.com,antran,T,3,TS0003,Tr?n Th?,An,15 Nguy?n Trãi,00:00.0,,antran@gmail.com
+tam.tathanh@ts.com,123,F,4,TS0004,T? Thành,Tâm,20 Võ th? Sáu,00:00.0,8565666,thanh2210@gmail.com
+son.ngothanh@ts.com,son1984,T,5,TS0005,Ngô Thành,S?n,122 Tr?n Phú,00:00.0,6172455549,ngothanhson1984@gmail.com
+thuy.lethi@ts.com,thuyle,T,6,TS0006,Lê th?,Thu?,25 Ngô Quy?n,00:00.0,9767677,thuyle2507@gmail.com
+an.nguyenhuu@ts.com,annguyen,F,7,TS0007,Nguy?n H?u,An,12 Lê Thánh Tôn,00:00.0,2517515241,annguyen1984@gmail.com
+duong.thaichi@ts.com,duongthai,F,8,TS0008,Thái Chí,D??ng,97 Võ v?n T?n,00:00.0,6195177470,duong0204@gmail.com
+thanh.tranvan@ts.com,thanh2505,T,9,TS0009,Tr?n V?n,Thanh,25 Tr?n V?n ?ang,00:00.0,918158,thanhtranvan1988@gmail.com
+nghi.nguyendung@ts.com,nghinguyen,T,10,TS0010,Nguy?n D?ng,Nghi,65 Tr?n V?n Th?i,00:00.0,,nghinguyen99@gmail.com
